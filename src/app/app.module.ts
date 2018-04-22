@@ -1,16 +1,33 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AlertModule } from 'ngx-bootstrap';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
-import { AppComponent } from './app.component';
+import { InvoiceService } from './Services/InvoiceService';
+import { InvoiceListComponent } from './invoices/invoice-list.component';
+import { InvoiceThumbnailComponent } from './invoices/invoice-thumbnail';
+import { InvoiceDetails } from './invoices/invoice-details';
+import { InvoiceApp } from './invoices/invoice-app';
+import { NavBar } from './reUsables/nav/navbar';
+import { SideBar } from './reUsables/sidebar/sidebar';
+import { appRoutes } from './routes';
 
 @NgModule({
   declarations: [
-    AppComponent
+    InvoiceListComponent,
+    InvoiceThumbnailComponent,
+    InvoiceDetails,
+    InvoiceApp,
+    NavBar,
+    SideBar
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    HttpModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [InvoiceService],
+  bootstrap: [InvoiceApp]
 })
 export class AppModule { }

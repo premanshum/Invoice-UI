@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-toggleable-md">
+    <div class="navbar-header">
+        <a class="navbar-brand" >Invoices</a>
+    </div>
+
+    <div class="navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li><a [routerLink]="['/invoices']">All Invoices</a></li>
+            <li><a >Create Invoice</a></li>                
+        </ul>
+        <form id="searchForm"  class="form-inline my-2 my-lg-0"  >
+            <input type="text" class="form-control" placeholder="Invoice Number" >                
+            <button class="btn btn-success" >Search</button>
+        </form>
+        <div class="navbar-header navbar-right">
+                <a>Welcome Prem</a>
+        </div>
+    </div>
+</nav>

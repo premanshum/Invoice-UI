@@ -1,0 +1,30 @@
+<div class="well hoverwell thumbnail BorderNo " [routerLink]="['/invoices', m_invoice.InvoiceNumber]">
+    <div [hidden]="m_invoice.IsModified"
+         class="icon-star icon-white BorderNo"
+         style="position:relative;float:right;  top:0px; right:0"
+         data-toggle="tooltip" title="New item">
+    </div>
+    <div [hidden]="m_invoice.IsDeleted"
+         class="icon-ban-circle icon-white BorderNo"
+         style="position:relative;float:right;  top:0px; right:0"
+         data-toggle="tooltip" title="Deleted">
+    </div>
+    <div class="BorderNo">
+        <h5 class="BorderNo">{{m_invoice.InvoiceNumber}}</h5>
+    </div>
+    <div class=" BorderNo">
+        ({{m_invoice.Description}})
+    </div>
+    <div class=" BorderNo">
+        Site# {{m_invoice.SiteId}} ({{m_invoice.ParentSiteId}})
+    </div>
+    <div class="">
+        Modified On {{m_invoice.ModifiedDate}} ({{m_invoice.IsModified}})
+    </div>
+    <div class=" Borderno">
+        Total : {{m_invoice.InvoiceTotal}}
+    </div>
+    <div class=" Borderno">
+        User : {{m_invoice.User}}
+    </div>
+</div>

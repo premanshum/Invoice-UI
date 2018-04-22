@@ -1,5 +1,4 @@
 /* app css stylesheet */
-
 .hoverwell:hover {
   background-color: #485563;
   cursor: pointer;
@@ -32,34 +31,4 @@ button {
 }
 .toast-warning {
   background-color: #f89406;
-}
-
-.BorderYes{
-  border:1px solid red
-}
-
-.BorderNo{
-  border:0px solid red
-}
-.upperRight{
-  position:relative;
-  top:0;
-  right:0%;
-}
-.pnavbar-brand {
-  display: inline-block;
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
-  line-height: inherit;
-  white-space: nowrap;
-}
-
-.BorderG{
-  border:1px solid green
-}
-
-.BorderY{
-  border:1px solid yellow
 }

@@ -9,11 +9,12 @@ import { IInvoice } from '../dataModal/IInvoice';
   
 export class InvoiceDetails  implements OnInit{
     m_invoiceDetail : IInvoice;
+    m_currentComponentName : string;
     
     constructor(private route:ActivatedRoute) { }
     
     ngOnInit() {
-
+        this.m_currentComponentName = 'LineItems';
         //this.project = this.projectService.getProject(this.route.snapshot.params['id']);        
         this.m_invoiceDetail = {
             id : '001',
@@ -79,6 +80,11 @@ export class InvoiceDetails  implements OnInit{
                 },
             ]
         };
+    }
+
+    sideBarClickHandled(data){
+        console.log('Received : ', data.aValue);
+        this.m_currentComponentName = data.aValue;
     }
     
 }

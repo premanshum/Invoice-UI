@@ -9,6 +9,8 @@ import { InvoiceListComponent } from './invoices/invoice-list.component';
 import { InvoiceThumbnailComponent } from './invoices/invoice-thumbnail';
 import { InvoiceDetails } from './invoices/invoice-details';
 import { InvoiceApp } from './invoices/invoice-app';
+import { InvoiceLineItems} from './invoices/invoice-lineItems'
+import { InvoicePayments} from './invoices/invoice-payments'
 import { NavBar } from './reUsables/nav/navbar';
 import { SideBar } from './reUsables/sidebar/sidebar';
 import { appRoutes } from './routes';
@@ -19,6 +21,8 @@ import { appRoutes } from './routes';
     InvoiceThumbnailComponent,
     InvoiceDetails,
     InvoiceApp,
+    InvoiceLineItems,
+    InvoicePayments,
     NavBar,
     SideBar
   ],

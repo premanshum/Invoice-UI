@@ -1,37 +1,13 @@
 <div class="container-fluid">
     <div class="row">
-        <side-bar  class="col-md-2 sidebar" [m_invoiceNumber] = "m_invoiceDetail.invoiceNumber"></side-bar>
-        <div class="col-md-6 main">  
-            <h2 class="sub-header">{{m_invoiceDetail.invoiceNumber}}</h2>
-            <h5>{{m_invoiceDetail.description}}</h5>
-            <h5>Office : {{m_invoiceDetail.modifiedDate}}</h5>
-            <h5>Path : {{m_invoiceDetail.siteId}}</h5>
-
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Item</th>
-                            <th>Product</th>
-                            <th>Units</th>
-                            <th>Unit Price</th>
-                            <th>Price</th>
-                            <th>Ng Change</th>
-                        </tr>
-                    </thead>
-                    
-                    <tbody *ngFor="let lineItem of m_invoiceDetail.lineItems">
-                        <tr>
-                            <td>{{lineItem.product.productCode}}</td>
-                            <td>{{lineItem.product.productDescription}}</td>
-                            <td>{{lineItem.units}}</td>
-                            <td>{{lineItem.product.unitPrice}}</td>
-                            <td>{{lineItem.price}}</td>
-                            <td>{{lineItem.ngCharge}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <side-bar   class="col-md-2 sidebar" 
+                    [m_invoiceNumber] = "m_invoiceDetail.invoiceNumber"
+                    (sideBarClick) = "sideBarClickHandled($event)"></side-bar> <!-- $event is a part of syntax, cannot be renamed to anything else -->
+        <invoice-lineItems class="col-md-6 main"
+                    *ngIf="m_currentComponentName == 'LineItems'"
+                    [m_invoiceDetail] = "m_invoiceDetail"></invoice-lineItems>
+        <invoice-payments class="col-md-6 main"
+                    *ngIf="m_currentComponentName == 'Payments'"
+                    [m_invoiceDetail] = "m_invoiceDetail"></invoice-payments>
     </div>
 </div>

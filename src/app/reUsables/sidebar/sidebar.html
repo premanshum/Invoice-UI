@@ -1,8 +1,8 @@
 <div>
     <ul >
-        <li class="active"><h4><a [routerLink]="['/invoices', m_invoiceNumber]">Line Item<span class="sr-only">(current)</span></a></h4></li>
-        <li><h4><a [routerLink]="['/invoices', m_invoiceNumber]">Payments</a></h4></li>
-        <li><h4><a [routerLink]="['/invoices', m_invoiceNumber]">Providers</a></h4></li>
-        <li><h4><a [routerLink]="['/invoices', m_invoiceNumber]">Bill Notes</a></h4></li>
+        <li class="active"><h4><a [routerLink]="['/invoices', m_invoiceNumber]" (click)="clickHandler('LineItems')">Line Item<span class="sr-only">(current)</span></a></h4></li>
+        <li><h4><a [routerLink]="['/invoices', m_invoiceNumber]" (click)="clickHandler('Payments')">Payments</a></h4></li>
+        <li><h4><a [routerLink]="['/invoices', m_invoiceNumber]" (click)="clickHandler('Providers')">Providers</a></h4></li>
+        <li><h4><a [routerLink]="['/invoices', m_invoiceNumber]" (click)="clickHandler('Bill Notes')">Bill Notes</a></h4></li>
     </ul>
 </div>

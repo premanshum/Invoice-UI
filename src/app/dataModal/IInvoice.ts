@@ -1,4 +1,5 @@
 import { ILineItem } from "./ILineItem";
+import { IPayment } from "./IPayment";
 
 export interface IInvoice {
     id: string,
@@ -13,5 +14,6 @@ export interface IInvoice {
     isModified: boolean,
     isDeleted: boolean,
     invoiceTotal: string,
-    lineItems : ILineItem[]
+    lineItems : ILineItem[],
+    payments : IPayment[]
 }

@@ -63,3 +63,8 @@ button {
 .BorderY{
   border:1px solid yellow
 }
+
+select{
+  background-color: #485563;
+  color: white;
+}

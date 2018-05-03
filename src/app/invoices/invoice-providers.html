@@ -1,3 +1,10 @@
+<select name="state" ngModel>
+    <option value="" disabled>Choose a state</option>
+    <option *ngFor="let state of states" [ngValue]="state">
+      {{ state.abbrev }}
+    </option>
+</select>
+
 <div > 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -14,7 +21,16 @@
             
             <tbody *ngFor="let lineItem of m_invoiceDetail.lineItems">
                 <tr>
-                    <td contenteditable='true'>{{lineItem.product.productCode}}</td>
+                    <td contenteditable='false'>
+                        <select id="Id" #ctrl="ngModel" name="productSelect" 
+                                [compareWith]="compareFn" [(ngModel)] = "lineItem.product"
+                                (change)="selectProductCode(ctrl, lineItem)">
+                        <option *ngFor="let product of m_products"
+                                 [ngValue]="product">  
+                                {{product.productCode}}
+                        </option>  
+                        </select>
+                    </td>
                     <td contenteditable='true'>{{lineItem.product.productDescription}}</td>
                     <td contenteditable='true'>{{lineItem.units}}</td>
                     <td contenteditable='true'>{{lineItem.product.unitPrice}}</td>
@@ -25,3 +41,14 @@
         </table>
     </div>
 </div>
+
+
+
+<button class="btn btn-xs btn-danger c-inline-editor" >
+    <span class="fa fa-remove"></span> 
+</button>
+<button class="btn btn-xs btn-primary " >
+    <span class="fa fa-remove">dfs</span> 
+</button>
+<button >
+</button>

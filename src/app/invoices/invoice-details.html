@@ -16,8 +16,9 @@
                         [m_invoiceDetail] = "m_invoiceDetail"></invoice-payments>
             <invoice-providers class="col-md-6 main"
                         *ngIf="m_currentComponentName == 'Providers'"
-                        [m_invoiceDetail] = "m_invoiceDetail">
-            </invoice-providers>
+                        [m_invoiceDetail] = "m_invoiceDetail"
+                        [m_products] = "m_products"
+                        (onProductChanged) = "OnProductChangedHandler($event)"></invoice-providers>
         </div>
     </div>
 </div>

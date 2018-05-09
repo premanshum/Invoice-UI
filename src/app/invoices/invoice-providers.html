@@ -1,10 +1,3 @@
-<select name="state" ngModel>
-    <option value="" disabled>Choose a state</option>
-    <option *ngFor="let state of states" [ngValue]="state">
-      {{ state.abbrev }}
-    </option>
-</select>
-
 <div > 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -14,41 +7,17 @@
                     <th>Product</th>
                     <th>Units</th>
                     <th>Unit Price</th>
-                    <th>Price</th>
-                    <th>Ng Change</th>
                 </tr>
             </thead>
             
-            <tbody *ngFor="let lineItem of m_invoiceDetail.lineItems">
+            <tbody *ngFor="let provider of m_invoiceDetail.providers">
                 <tr>
-                    <td contenteditable='false'>
-                        <select id="Id" #ctrl="ngModel" name="productSelect" 
-                                [compareWith]="compareFn" [(ngModel)] = "lineItem.product"
-                                (change)="selectProductCode(ctrl, lineItem)">
-                        <option *ngFor="let product of m_products"
-                                 [ngValue]="product">  
-                                {{product.productCode}}
-                        </option>  
-                        </select>
-                    </td>
-                    <td contenteditable='true'>{{lineItem.product.productDescription}}</td>
-                    <td contenteditable='true'>{{lineItem.units}}</td>
-                    <td contenteditable='true'>{{lineItem.product.unitPrice}}</td>
-                    <td contenteditable='true'>{{lineItem.price}}</td>
-                    <td contenteditable='true'>{{lineItem.ngCharge}}</td>
+                    <td contenteditable='false'>{{provider.id}}</td>
+                    <td contenteditable='true'>{{provider.name}}</td>
+                    <td contenteditable='true'>{{provider.address}}</td>
+                    <td contenteditable='true'>{{provider.email}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-
-
-
-<button class="btn btn-xs btn-danger c-inline-editor" >
-    <span class="fa fa-remove"></span> 
-</button>
-<button class="btn btn-xs btn-primary " >
-    <span class="fa fa-remove">dfs</span> 
-</button>
-<button >
-</button>

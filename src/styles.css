@@ -57,7 +57,7 @@ button {
 }
 
 .BorderG{
-  border:1px solid green
+  border:1px solid green;
 }
 
 .BorderY{
@@ -68,3 +68,5 @@ select{
   background-color: #485563;
   color: white;
 }
+
+.linkActive {color:green}

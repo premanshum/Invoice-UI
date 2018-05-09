@@ -14,7 +14,16 @@
             
             <tbody *ngFor="let lineItem of m_invoiceDetail.lineItems">
                 <tr>
-                    <td contenteditable='true'>{{lineItem.product.productCode}}</td>
+                    <td contenteditable='false'>
+                        <select id="Id" #ctrl="ngModel" name="productSelect" 
+                                [compareWith]="compareFn" [(ngModel)] = "lineItem.product"
+                                (change)="selectProductCode(ctrl, lineItem)">
+                        <option *ngFor="let product of m_products"
+                                 [ngValue]="product">  
+                                {{product.productCode}}
+                        </option>  
+                        </select>
+                    </td>
                     <td contenteditable='true'>{{lineItem.product.productDescription}}</td>
                     <td contenteditable='true'>{{lineItem.units}}</td>
                     <td contenteditable='true'>{{lineItem.product.unitPrice}}</td>

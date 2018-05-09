@@ -4,6 +4,7 @@ import { IInvoice } from '../dataModal/IInvoice';
 import { ILineItem } from '../dataModal/ILineItem';
 import { IPayment } from '../dataModal/IPayment';
 import { IProduct } from '../dataModal/IProduct';
+import { IProvider } from '../dataModal/IProvider';
 
 @Component({
     /* No selector is needed as this page is going to be routed independently */
@@ -35,12 +36,13 @@ export class InvoiceDetails  implements OnInit{
             isDeleted: true,
             invoiceTotal: '40',
             payments : this.tempPayments,
-            lineItems : this.tempLineItems
+            lineItems : this.tempLineItems,
+            providers : this.tempProviders
         };
     }
 
     sideBarClickHandled(data){
-        console.log('Received : ', data.aValue);
+        //console.log('Received : ', data.aValue);
         this.m_currentComponentName = data.aValue;
     }
 
@@ -249,4 +251,72 @@ export class InvoiceDetails  implements OnInit{
         }
     ];
 
+    tempProviders : IProvider[] = [
+        {
+            id : "Pvdr001",
+            name : "Children Hospital",
+            address: "DummyVille",
+            email:"pvdr@junkemail.com"
+        },
+        {
+            id : "Pvdr002",
+            name : "St.Thomas Hospital",
+            address: "DummyVille tn",
+            email:"pvdr02@junkemail.com"
+        },
+        {
+            id : "Pvdr003",
+            name : "Cure & Care Hospital",
+            address: "DummyVille tn",
+            email:"pvdr03@junkemail.com"
+        },
+        {
+            id : "Pvdr004",
+            name : "St.Peter's Hospital",
+            address: "DummyVille downtown",
+            email:"pvdr04@junkemail.com"
+        },
+        {
+            id : "Pvdr005",
+            name : "Children Hospital",
+            address: "DummyVille South",
+            email:"pvdr05@junkemail.com"
+        },
+        {
+            id : "Pvdr006",
+            name : "Children Hospital",
+            address: "DummyVille",
+            email:"pvdr@junkemail.com"
+        },
+        {
+            id : "Pvdr007",
+            name : "St.Thomas Hospital",
+            address: "DummyVille tn",
+            email:"pvdr07@junkemail.com"
+        },
+        {
+            id : "Pvdr008",
+            name : "Cure & Care Hospital",
+            address: "DummyVille tn",
+            email:"pvdr08@junkemail.com"
+        },
+        {
+            id : "Pvdr009",
+            name : "St.Peter's Hospital",
+            address: "DummyVille downtown",
+            email:"pvdr09@junkemail.com"
+        },
+        {
+            id : "Pvdr010",
+            name : "Children Hospital",
+            address: "DummyVille South",
+            email:"pvdr010@junkemail.com"
+        },
+        {
+            id : "Pvdr011",
+            name : "Children Hospital",
+            address: "DummyVille South",
+            email:"pvdr011@junkemail.com"
+        }
+    ];
 }

@@ -1,0 +1,122 @@
+[{
+    "id":"ACH",
+    "productCode":"ACH",
+    "productDescription":"The amount of this invoice will be deducted automatically on 20th",
+    "unitPrice":"0"
+},{
+    "id":"ACS",
+    "productCode":"ACS",
+    "productDescription":"All claims Service fee for current month",
+    "unitPrice":"0"
+},{
+    "id":"ACSONE",
+    "productCode":"ACSONE",
+    "productDescription":"ACS One code",
+    "unitPrice":"0.11"
+},{
+    "id":"ADDON",
+    "productCode":"ADDON",
+    "productDescription":"Add on fee",
+    "unitPrice":"50"
+},{
+    "id":"ADVELIGALL",
+    "productCode":"ADVELIGALL",
+    "productDescription":"Eligibility plus all bundle",
+    "unitPrice":"29"
+},{
+    "id":"ADVELIGPLU",
+    "productCode":"ADVELIGPLU",
+    "productDescription":"ligibility plus bundle",
+    "unitPrice":"39"
+},{
+    "id":"ANNUAL",
+    "productCode":"ANNUAL",
+    "productDescription":"Annual maintenance fee",
+    "unitPrice":"200"
+},{
+    "id":"AUTOSEC",
+    "productCode":"AUTOSEC",
+    "productDescription":"Automated Secondary",
+    "unitPrice":"0.85"
+},{
+    "id":"BATCHELIG",
+    "productCode":"BATCHELIG",
+    "productDescription":"Batch eligibility",
+    "unitPrice":"29"
+},{
+    "id":"BILLINGML",
+    "productCode":"BILLINGML",
+    "productDescription":"Billing Service Package for ML/PT",
+    "unitPrice":"29.5"
+},{
+    "id":"CASSFLTR",
+    "productCode":"CASSFLTR",
+    "productDescription":"CASS Postal Filter",
+    "unitPrice":"0.05"
+},{
+    "id":"CLAIMSTAT",
+    "productCode":"CLAIMSTAT",
+    "productDescription":"Claim Status Inquiry",
+    "unitPrice":"0.25"
+},{
+    "id":"CSI",
+    "productCode":"CSI",
+    "productDescription":"Web Claim Status Inquiry",
+    "unitPrice":"0.25"
+},{
+    "id":"CLICKPRNT",
+    "productCode":"CLICKPRNT",
+    "productDescription":"Click and Print for previous month",
+    "unitPrice":"0.25"
+},{
+    "id":"CONNECTML",
+    "productCode":"CONNECTML",
+    "productDescription":"Connect Package for ML/PT",
+    "unitPrice":"25.68"
+},{
+    "id":"DENIALMGMT",
+    "productCode":"DENIALMGMT",
+    "productDescription":"Denial management tools",
+    "unitPrice":"45"
+},{
+    "id":"QCPAPER",
+    "productCode":"QCPAPER",
+    "productDescription":"Paper claims printed for previous month",
+    "unitPrice":"0.69"
+},{
+    "id":"QCTRANS",
+    "productCode":"QCTRANS",
+    "productDescription":"Electronic Claims filed",
+    "unitPrice":"0.39"
+},{
+    "id":"QCSTMTS",
+    "productCode":"QCSTMTS",
+    "productDescription":"Patient statements",
+    "unitPrice":"0.75"
+},{
+    "id":"SWIFTCOB",
+    "productCode":"SWIFTCOB",
+    "productDescription":"Swift package COB",
+    "unitPrice":"0"
+},{
+    "id":"SWIFTML",
+    "productCode":"SWIFTML",
+    "productDescription":"Swift package for ML/PT",
+    "unitPrice":"0"
+},{
+    "id":"TOTALML",
+    "productCode":"TOTALML",
+    "productDescription":"Total office package for ML/PT",
+    "unitPrice":"84.5"
+},{
+    "id":"WAPER",
+    "productCode":"WAPER",
+    "productDescription":"WorkComp Paper Claims",
+    "unitPrice":""
+},{
+    "id":"WEBCLAIMS",
+    "productCode":"WEBCLAIMS",
+    "productDescription":"Web claims transmission 2000",
+    "unitPrice":""
+}
+]

@@ -5,6 +5,9 @@ import { ILineItem } from '../dataModal/ILineItem';
 import { IPayment } from '../dataModal/IPayment';
 import { IProduct } from '../dataModal/IProduct';
 import { IProvider } from '../dataModal/IProvider';
+import { InvoiceService } from '../Services/InvoiceService';
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     /* No selector is needed as this page is going to be routed independently */
@@ -16,10 +19,13 @@ export class InvoiceDetails  implements OnInit{
     m_currentComponentName : string;
     m_products : IProduct[];
     
-    constructor(private route:ActivatedRoute) { }
+    constructor(
+        private route:ActivatedRoute,
+        private httpService: HttpClient,
+        private invoiceService: InvoiceService) { }
     
     ngOnInit() {
-        this.m_products = this.tempProducts;
+        //this.m_products = this.tempProducts;
         this.m_currentComponentName = 'LineItems';
         //this.project = this.projectService.getProject(this.route.snapshot.params['id']);        
         this.m_invoiceDetail = {
@@ -39,6 +45,20 @@ export class InvoiceDetails  implements OnInit{
             lineItems : this.tempLineItems,
             providers : this.tempProviders
         };
+
+
+        this.invoiceService
+        .getProductsFromJson()
+        .subscribe(
+          data => {
+            this.m_products = data as IProduct[];
+            //console.log ("We got the Data. " + this.products);
+          },
+          (err: HttpErrorResponse) => {
+            console.log ("Something gone bad." + err.message);
+          }
+      );
+
     }
 
     sideBarClickHandled(data){
@@ -67,8 +87,8 @@ export class InvoiceDetails  implements OnInit{
             units:"12",
             price:"200",
             product:{
-                id:"QCtrans",
-                productCode:"QCtrans",
+                id:"QCTRANS",
+                productCode:"QCTRANS",
                 productDescription:"Electronic Claims Filed",
                 unitPrice:"1.95"
             }
@@ -79,8 +99,8 @@ export class InvoiceDetails  implements OnInit{
             units:"14",
             price:"230",
             product:{
-                id:"BATCHLIG",
-                productCode:"BATCHLIG",
+                id:"BATCHELIG",
+                productCode:"BATCHELIG",
                 productDescription:"Integrated Eligibility 02/18",
                 unitPrice:"1.25"
             }

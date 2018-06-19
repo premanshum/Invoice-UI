@@ -1,19 +1,31 @@
-import { Injectable} from '@angular/core'
-import { Http, Response } from '@angular/http'
-import { Observable } from 'rxjs/Rx'
+import { Injectable} from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { IProduct } from '../dataModal/IProduct';
+
 
 @Injectable()
 export class InvoiceService{
 
-    constructor(private http:Http){
+    products : IProduct[];
 
+    constructor(private http:Http, private httpService: HttpClient){
+        // Nothing interesting
     }
 
     public getInvoicesFromApi() : Observable<any>{
-
         return this.http.get("http://localhost:8085/InvoiceWebApi/invoice")
         .map((response: Response) => response.json());
-        
+    }
+
+    
+    public getProductsFromJson() : Observable<any>{
+        var xxx = this.httpService.get('./assets/productRepository.json');
+        //.map((response: Response) => response.json());
+        return xxx;
+        // Inspired from: http://www.encodedna.com/angular/read-an-external-json-file-in-angular-4-and-convert-data-to-table.htm
     }
 
     getInvoices(){

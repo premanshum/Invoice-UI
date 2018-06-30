@@ -1,9 +1,4 @@
-<div >  
-    <h2 class="sub-header">{{m_invoiceDetail.invoiceNumber}}</h2>
-    <h5>{{m_invoiceDetail.description}}</h5>
-    <h5>Office : {{m_invoiceDetail.modifiedDate}}</h5>
-    <h5>Path : {{m_invoiceDetail.siteId}}</h5>
-
+<div > 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -23,12 +18,13 @@
                     <td>{{payment.invNum}}</td>
                     <td>{{payment.payment}}</td>
                     <td>{{payment.adjust}}</td>
-                    <td>{{payment.date}}</td>
+                    <td>{{payment.date | date:Date}}</td>
                     <td>{{payment.adjCode}}</td>
                     <td>{{payment.checkNumber}}</td>
-                    <td>{{payment.docDate}}</td>
+                    <td>{{payment.docDate | date:Date}}</td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
+

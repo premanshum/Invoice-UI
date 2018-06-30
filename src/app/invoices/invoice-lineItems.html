@@ -1,9 +1,4 @@
-<div >  
-    <h2 class="sub-header">{{m_invoiceDetail.invoiceNumber}}</h2>
-    <h5>{{m_invoiceDetail.description}}</h5>
-    <h5>Office : {{m_invoiceDetail.modifiedDate}}</h5>
-    <h5>Path : {{m_invoiceDetail.siteId}}</h5>
-
+<div > 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -19,12 +14,21 @@
             
             <tbody *ngFor="let lineItem of m_invoiceDetail.lineItems">
                 <tr>
-                    <td>{{lineItem.product.productCode}}</td>
-                    <td>{{lineItem.product.productDescription}}</td>
-                    <td>{{lineItem.units}}</td>
-                    <td>{{lineItem.product.unitPrice}}</td>
-                    <td>{{lineItem.price}}</td>
-                    <td>{{lineItem.ngCharge}}</td>
+                    <td contenteditable='false'>
+                        <select id="Id" #ctrl="ngModel" name="productSelect" 
+                                [compareWith]="compareFn" [(ngModel)] = "lineItem.product"
+                                (change)="selectProductCode(ctrl, lineItem)">
+                        <option *ngFor="let product of m_products"
+                                 [ngValue]="product">  
+                                {{product.productCode}}
+                        </option>  
+                        </select>
+                    </td>
+                    <td contenteditable='true'>{{lineItem.product.productDescription}}</td>
+                    <td contenteditable='true'>{{lineItem.units}}</td>
+                    <td contenteditable='true'>{{lineItem.product.unitPrice}}</td>
+                    <td contenteditable='true'>{{lineItem.price}}</td>
+                    <td contenteditable='true'>{{lineItem.ngCharge}}</td>
                 </tr>
             </tbody>
         </table>

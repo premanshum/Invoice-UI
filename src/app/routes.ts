@@ -15,6 +15,10 @@ export const appRoutes:Routes= [
         path: '',
         redirectTo: '/invoices',
         pathMatch:'full'
+    },
+    { 
+        path: 'trial',
+        component:InvoiceListComponent
     }
 
 ]

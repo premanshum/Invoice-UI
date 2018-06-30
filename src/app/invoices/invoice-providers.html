@@ -1,0 +1,23 @@
+<div > 
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Product</th>
+                    <th>Units</th>
+                    <th>Unit Price</th>
+                </tr>
+            </thead>
+            
+            <tbody *ngFor="let provider of m_invoiceDetail.providers">
+                <tr>
+                    <td contenteditable='false'>{{provider.id}}</td>
+                    <td contenteditable='true'>{{provider.name}}</td>
+                    <td contenteditable='true'>{{provider.address}}</td>
+                    <td contenteditable='true'>{{provider.email}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

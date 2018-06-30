@@ -3,6 +3,11 @@ import { ActivatedRoute } from '@angular/router'
 import { IInvoice } from '../dataModal/IInvoice';
 import { ILineItem } from '../dataModal/ILineItem';
 import { IPayment } from '../dataModal/IPayment';
+import { IProduct } from '../dataModal/IProduct';
+import { IProvider } from '../dataModal/IProvider';
+import { InvoiceService } from '../Services/InvoiceService';
+import { HttpClient } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     /* No selector is needed as this page is going to be routed independently */
@@ -12,10 +17,15 @@ import { IPayment } from '../dataModal/IPayment';
 export class InvoiceDetails  implements OnInit{
     m_invoiceDetail : IInvoice;
     m_currentComponentName : string;
+    m_products : IProduct[];
     
-    constructor(private route:ActivatedRoute) { }
+    constructor(
+        private route:ActivatedRoute,
+        private httpService: HttpClient,
+        private invoiceService: InvoiceService) { }
     
     ngOnInit() {
+        //this.m_products = this.tempProducts;
         this.m_currentComponentName = 'LineItems';
         //this.project = this.projectService.getProject(this.route.snapshot.params['id']);        
         this.m_invoiceDetail = {
@@ -32,15 +42,44 @@ export class InvoiceDetails  implements OnInit{
             isDeleted: true,
             invoiceTotal: '40',
             payments : this.tempPayments,
-            lineItems : this.tempLineItems
+            lineItems : this.tempLineItems,
+            providers : this.tempProviders
         };
+
+
+        this.invoiceService
+        .getProductsFromJson()
+        .subscribe(
+          data => {
+            this.m_products = data as IProduct[];
+            //console.log ("We got the Data. " + this.products);
+          },
+          (err: HttpErrorResponse) => {
+            console.log ("Something gone bad." + err.message);
+          }
+      );
+
     }
 
     sideBarClickHandled(data){
-        console.log('Received : ', data.aValue);
+        //console.log('Received : ', data.aValue);
         this.m_currentComponentName = data.aValue;
     }
+
+    OnProductChangedHandler(data){
+        console.log('Received selectedProduct: ', <IProduct> data.selectedProduct);
+        console.log('Received selectedLineItem: ', <ILineItem> data.selectedLineItem);
+        
+        this.m_invoiceDetail
+            .lineItems
+            .find(l=>l.id == data.selectedLineItem.id).product = data.selectedProduct;
+        //alineItem.product = data.selectedProduct;
+        console.log(this.m_invoiceDetail);
+    }
     
+
+// Dummy Data
+
     tempLineItems : ILineItem [] = [
         {
             id:"0011",
@@ -48,10 +87,10 @@ export class InvoiceDetails  implements OnInit{
             units:"12",
             price:"200",
             product:{
-                id:"QCtrans",
-                productCode:"QCTrans",
+                id:"QCTRANS",
+                productCode:"QCTRANS",
                 productDescription:"Electronic Claims Filed",
-                unitPrice:"1.75"
+                unitPrice:"1.95"
             }
         },
         {
@@ -60,10 +99,10 @@ export class InvoiceDetails  implements OnInit{
             units:"14",
             price:"230",
             product:{
-                id:"BATCHLIG",
-                productCode:"BATCHLIG",
+                id:"BATCHELIG",
+                productCode:"BATCHELIG",
                 productDescription:"Integrated Eligibility 02/18",
-                unitPrice:"1.95"
+                unitPrice:"1.25"
             }
         },
         {
@@ -72,7 +111,7 @@ export class InvoiceDetails  implements OnInit{
             units:"16",
             price:"240",
             product:{
-                id:"ClaimStat",
+                id:"CLAIMSTAT",
                 productCode:"CLAIMSTAT",
                 productDescription:"Claim Status Inquiry",
                 unitPrice:"1.35"
@@ -87,7 +126,7 @@ export class InvoiceDetails  implements OnInit{
                 id:"CSI",
                 productCode:"CSI",
                 productDescription:"Web Claim Status Inquiry",
-                unitPrice:"1.75"
+                unitPrice:"1.45"
             }
         },
     ];
@@ -175,4 +214,129 @@ export class InvoiceDetails  implements OnInit{
         },
     ];
 
+    tempProducts : IProduct[] = [
+        {
+            id : 'Id01',
+            productCode : 'ProdCode01',
+            productDescription : 'Product Description',
+            unitPrice : '1.1'
+        },
+        {
+            id : 'QCtrans',
+            productCode : 'QCtrans',
+            productDescription : 'Quality Checking Transaction',
+            unitPrice : '1.9'
+        },
+        {
+            id : 'BATCHLIG',
+            productCode : 'BATCHLIG',
+            productDescription : 'Integrated Eligibility 02/18',
+            unitPrice : '1.2'
+        },
+        {
+            id : 'CLAIMSTAT',
+            productCode : 'CLAIMSTAT',
+            productDescription : 'Claim Status Inquiry',
+            unitPrice : '1.3'
+        },
+        {
+            id : 'CSI',
+            productCode : 'CSI',
+            productDescription : 'Claim Status Inquiry (Web)',
+            unitPrice : '1.4'
+        },
+        {
+            id : 'COB',
+            productCode : 'COB',
+            productDescription : 'Cordination of Benefits',
+            unitPrice : '1.5'
+        },
+        {
+            id : 'SWIFTCOB',
+            productCode : 'SWIFTCOB',
+            productDescription : 'Swift Cordination of Benefits',
+            unitPrice : '1.6'
+        },
+        {
+            id : 'QCPAPER',
+            productCode : 'QCPAPER',
+            productDescription : 'Paperless transaction',
+            unitPrice : '1.7'
+        },
+        {
+            id : 'WXYZ',
+            productCode : 'WXYZ',
+            productDescription : 'Double U Axe Why Zee',
+            unitPrice : '1.8'
+        }
+    ];
+
+    tempProviders : IProvider[] = [
+        {
+            id : "Pvdr001",
+            name : "Children Hospital",
+            address: "DummyVille",
+            email:"pvdr@junkemail.com"
+        },
+        {
+            id : "Pvdr002",
+            name : "St.Thomas Hospital",
+            address: "DummyVille tn",
+            email:"pvdr02@junkemail.com"
+        },
+        {
+            id : "Pvdr003",
+            name : "Cure & Care Hospital",
+            address: "DummyVille tn",
+            email:"pvdr03@junkemail.com"
+        },
+        {
+            id : "Pvdr004",
+            name : "St.Peter's Hospital",
+            address: "DummyVille downtown",
+            email:"pvdr04@junkemail.com"
+        },
+        {
+            id : "Pvdr005",
+            name : "Children Hospital",
+            address: "DummyVille South",
+            email:"pvdr05@junkemail.com"
+        },
+        {
+            id : "Pvdr006",
+            name : "Children Hospital",
+            address: "DummyVille",
+            email:"pvdr@junkemail.com"
+        },
+        {
+            id : "Pvdr007",
+            name : "St.Thomas Hospital",
+            address: "DummyVille tn",
+            email:"pvdr07@junkemail.com"
+        },
+        {
+            id : "Pvdr008",
+            name : "Cure & Care Hospital",
+            address: "DummyVille tn",
+            email:"pvdr08@junkemail.com"
+        },
+        {
+            id : "Pvdr009",
+            name : "St.Peter's Hospital",
+            address: "DummyVille downtown",
+            email:"pvdr09@junkemail.com"
+        },
+        {
+            id : "Pvdr010",
+            name : "Children Hospital",
+            address: "DummyVille South",
+            email:"pvdr010@junkemail.com"
+        },
+        {
+            id : "Pvdr011",
+            name : "Children Hospital",
+            address: "DummyVille South",
+            email:"pvdr011@junkemail.com"
+        }
+    ];
 }

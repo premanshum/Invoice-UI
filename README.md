@@ -28,3 +28,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## To stop the angular cli
 ctrl + c
+
+## To Push to Branch InvoiceUIApp_Dev
+
+git remote set-url origin https://github.com/premanshum/Invoice-UI
+git push origin InvoiceUIApp_Dev

@@ -3,11 +3,22 @@
         <side-bar   class="col-md-2 sidebar" 
                     [m_invoiceNumber] = "m_invoiceDetail.invoiceNumber"
                     (sideBarClick) = "sideBarClickHandled($event)"></side-bar> <!-- $event is a part of syntax, cannot be renamed to anything else -->
-        <invoice-lineItems class="col-md-6 main"
-                    *ngIf="m_currentComponentName == 'LineItems'"
-                    [m_invoiceDetail] = "m_invoiceDetail"></invoice-lineItems>
-        <invoice-payments class="col-md-6 main"
-                    *ngIf="m_currentComponentName == 'Payments'"
-                    [m_invoiceDetail] = "m_invoiceDetail"></invoice-payments>
+        <div> 
+            <h2 class="sub-header">{{m_invoiceDetail.invoiceNumber}}</h2>
+            <h5>{{m_invoiceDetail.description}}</h5>
+            <h5>Office : {{m_invoiceDetail.modifiedDate | date : 'mediumDate'}}</h5>
+            <h5>Path : {{m_invoiceDetail.siteId}}</h5>
+            <invoice-lineItems class="col-md-6 main"
+                        *ngIf="m_currentComponentName == 'LineItems'"
+                        [m_invoiceDetail] = "m_invoiceDetail"
+                        [m_products] = "m_products"
+                        (onProductChanged) = "OnProductChangedHandler($event)"></invoice-lineItems>
+            <invoice-payments class="col-md-6 main"
+                        *ngIf="m_currentComponentName == 'Payments'"
+                        [m_invoiceDetail] = "m_invoiceDetail"></invoice-payments>
+            <invoice-providers class="col-md-6 main"
+                        *ngIf="m_currentComponentName == 'Providers'"
+                        [m_invoiceDetail] = "m_invoiceDetail"></invoice-providers>
+        </div>
     </div>
 </div>

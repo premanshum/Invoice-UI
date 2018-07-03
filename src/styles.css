@@ -5,7 +5,13 @@
   cursor: pointer;
 }
 
+.hoverwell{
+  background-color:rgb(45, 13, 75)
+}
+
 .container {
+  background-color : black;
+  color : white;
   padding-top: 10px;
 }
 
@@ -62,6 +68,11 @@ button {
 
 .BorderY{
   border:1px solid yellow
+}
+
+
+.BorderB{
+  border:1px solid Blue
 }
 
 select{

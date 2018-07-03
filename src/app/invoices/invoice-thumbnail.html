@@ -1,19 +1,21 @@
-<div class="well hoverwell thumbnail BorderNo " [routerLink]="['/invoices', m_invoice.InvoiceNumber]">
+
+<div class="well hoverwell" [routerLink]="['/invoices', m_invoice.InvoiceNumber]"
+    style="margin: 4px; padding:2%; width: 100%;">
     <div [hidden]="m_invoice.IsModified"
-         class="icon-star icon-white BorderNo"
-         style="position:relative;float:right;  top:0px; right:0"
-         data-toggle="tooltip" title="New item">
+        class="icon-star icon-white BorderNo"
+        style="position:relative;float:right;  top:0px; right:0"
+        data-toggle="tooltip" title="New item">
     </div>
     <div [hidden]="m_invoice.IsDeleted"
-         class="icon-ban-circle icon-white BorderNo"
-         style="position:relative;float:right;  top:0px; right:0"
-         data-toggle="tooltip" title="Deleted">
+        class="icon-ban-circle icon-white BorderNo"
+        style="position:relative;float:right;  top:0px; right:0"
+        data-toggle="tooltip" title="Deleted">
     </div>
     <div class="BorderNo">
         <h5 class="BorderNo">{{m_invoice.InvoiceNumber}}</h5>
     </div>
     <div class=" BorderNo">
-        ({{m_invoice.Description}})
+        {{m_invoice.Description}}
     </div>
     <div class=" BorderNo">
         Site# {{m_invoice.SiteId}} ({{m_invoice.ParentSiteId}})

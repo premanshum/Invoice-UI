@@ -3,6 +3,8 @@ import { InvoiceService } from '../Services/InvoiceService';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from '../dataModal/IProduct';
+import { IInvoiceResponse } from '../dataModal/IInvoiceResponse';
+import { IInvoice } from '../dataModal/IInvoice';
 
 
 @Component({
@@ -11,8 +13,8 @@ import { IProduct } from '../dataModal/IProduct';
 })
 export class InvoiceListComponent implements OnInit {
 
-  invoices:any[];
-  apiResponse: any;
+  invoices:IInvoice[];
+  apiResponse: IInvoiceResponse;
   products : IProduct[];
   appConfig: any[];
   //private invoiceService;
@@ -28,7 +30,14 @@ export class InvoiceListComponent implements OnInit {
 
     this.invoiceService
           .getInvoicesFromApi()
-          .subscribe(data => this.apiResponse = data);
+          .subscribe(data => {
+            this.apiResponse = data;
+            console.log ("We got the Data. " + this.apiResponse.Result);
+            this.invoices = this.apiResponse.Result;
+          },
+          (err: HttpErrorResponse) => {
+            console.log ("Something gone bad." + err.message);
+          });
             
 /*
     this.invoiceService

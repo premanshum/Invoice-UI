@@ -1,8 +1,22 @@
-<div class="BorderNo">
-  <div class="">
-    <div class="span3" *ngFor="let invoice of invoices">
+<!--
+<div class="row BorderG" style="margin: -5px">
+    <div *ngFor="let invoice of invoices">
         <invoice-thumbnail [m_invoice] = "invoice"></invoice-thumbnail>
     </div>
-  </div>
 </div>
- 
+ -->
+<!-- https://stackoverflow.com/questions/43093786/using-angular2-ngfor-index/43093941 
+*ngIf="i%6===0"
+-->
+<table class="table" style="border: 0px">
+    <tbody *ngFor="let invoice of invoices; let i = index;" style="border: 0px">
+        <tr *ngIf="i%6===0" style="border: 0px solid red">
+            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+1]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+2]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+3]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+4]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+5]"></invoice-thumbnail></td>
+        </tr>
+    </tbody>
+</table>

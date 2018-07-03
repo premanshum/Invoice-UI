@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Rx';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from '../dataModal/IProduct';
+import { IInvoiceResponse } from '../dataModal/IInvoiceResponse';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable()
@@ -15,9 +17,9 @@ export class InvoiceService{
         // Nothing interesting
     }
 
-    public getInvoicesFromApi() : Observable<any>{
-        return this.http.get("http://localhost:8085/InvoiceWebApi/invoice")
-        .map((response: Response) => response.json());
+    public getInvoicesFromApi() : Observable<IInvoiceResponse>{
+        return this.httpService.get<IInvoiceResponse>("https://premwebapp01-dev02.azurewebsites.net/invoice/MethodB")
+        .pipe(catchError(this.handleError<IInvoiceResponse>('getInvoicesFromApi', null)));
     }
 
     
@@ -32,8 +34,11 @@ export class InvoiceService{
         return INVOICES;
     }
 
-    handleError(error: Response){
-        return Observable.throw(error.status);
+    private handleError<T>(opertaion = 'operation', result?: T){
+        return (error : any) : Observable<T> => {
+            console.error(error);
+            return Observable.of(result as T);
+        }
     }
 }
 

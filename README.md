@@ -31,5 +31,6 @@ ctrl + c
 
 ## To Push to Branch InvoiceUIApp_Dev
 
+git remote -v
 git remote set-url origin https://github.com/premanshum/Invoice-UI
 git push origin InvoiceUIApp_Dev

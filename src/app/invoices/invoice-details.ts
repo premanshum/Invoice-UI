@@ -29,21 +29,21 @@ export class InvoiceDetails  implements OnInit{
         this.m_currentComponentName = 'LineItems';
         //this.project = this.projectService.getProject(this.route.snapshot.params['id']);        
         this.m_invoiceDetail = {
-            id : '001',
-            reviewed: '1',
-            user: '1500',
-            modifiedDate: new Date('9/8/2017'),
-            description: 'This is invoice Description.',
-            siteId: '001',
-            parentSiteId: 'P001',
-            invoiceNumber: this.route.snapshot.params['id'],
-            mRev: false,
-            isModified: false,
-            isDeleted: true,
-            invoiceTotal: '40',
-            payments : this.tempPayments,
-            lineItems : this.tempLineItems,
-            providers : this.tempProviders
+            Id : '001',
+            Reviewed: '1',
+            User: '1500',
+            ModifiedDate: new Date('9/8/2017'),
+            Description: 'This is invoice Description.',
+            SiteId: '001',
+            ParentSiteId: 'P001',
+            InvoiceNumber: this.route.snapshot.params['id'],
+            MRev: false,
+            IsModified: false,
+            IsDeleted: true,
+            InvoiceTotal: '40',
+            Payments : this.tempPayments,
+            LineItems : this.tempLineItems,
+            Providers : this.tempProviders
         };
 
 
@@ -71,7 +71,7 @@ export class InvoiceDetails  implements OnInit{
         console.log('Received selectedLineItem: ', <ILineItem> data.selectedLineItem);
         
         this.m_invoiceDetail
-            .lineItems
+            .LineItems
             .find(l=>l.id == data.selectedLineItem.id).product = data.selectedProduct;
         //alineItem.product = data.selectedProduct;
         console.log(this.m_invoiceDetail);

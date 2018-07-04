@@ -8,18 +8,23 @@
             <li><a [routerLink]="['/invoices']">All Invoices</a></li>
             <!--<li><a [routerLink]="['/trial']">Create Invoice</a></li>            -->    
         </ul>
-        <form id="searchForm"  class="form-inline my-2 my-lg-0"  >
-            <input type="text" class="form-control" placeholder="Invoice Number" >                
+        <form id="searchForm" (ngSubmit)="searchInvoices(searchTerm)" class="form-inline my-2 my-lg-0"  >
+            <input  type="text" class="form-control" placeholder="Invoice Number" 
+                    [(ngModel)]="searchTerm" name="searchTerm">                
             <button class="btn btn-success" data-toggle="modal" modalBox-trigger>Search</button>
         </form>
     </div>
-        <div class="navbar-right navbar-header">
-                <a>Welcome Prem</a>
+    <div class="navbar-right navbar-header">
+        <div>
+            <a>Welcome Prem</a>
         </div>
+    </div>
 </nav>
 
 
 <!-- modalBox is a modal component 100668486232 -->
 <modalBox title="Invoice Search">
-    something
+    <div class="list-group">
+        <a class="list-group-item bg-dark" *ngFor="let invoice of _foundInvoices">{{invoice.InvoiceNumber}}</a>
+    </div>
 </modalBox>

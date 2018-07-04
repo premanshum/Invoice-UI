@@ -6,12 +6,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from '../dataModal/IProduct';
 import { IInvoiceResponse } from '../dataModal/IInvoiceResponse';
 import { catchError } from 'rxjs/operators';
+import { IInvoice } from '../dataModal/IInvoice';
 
 
 @Injectable()
 export class InvoiceService{
 
     products : IProduct[];
+    _invoiceResponse : IInvoiceResponse;
 
     constructor(private http:Http, private httpService: HttpClient){
         // Nothing interesting
@@ -22,6 +24,22 @@ export class InvoiceService{
         .pipe(catchError(this.handleError<IInvoiceResponse>('getInvoicesFromApi', null)));
     }
 
+    public searchInvoices(searchTerm : string){
+        console.log("Search Term : " + searchTerm);
+        var term = searchTerm.toLocaleLowerCase();
+        var results:IInvoice[] = [];
+
+        if(this._invoiceResponse == null)
+            return [];
+
+            var temp = this._invoiceResponse.Result;
+            //console.log("Api : " + JSON.stringify({temp}, null, 4));
+
+        var invoices = temp.filter(invoice => 
+            invoice.InvoiceNumber.toLocaleLowerCase().indexOf(term) > -1);
+        return invoices;
+    }
+
     
     public getProductsFromJson() : Observable<any>{
         var xxx = this.httpService.get('./assets/productRepository.json');
@@ -30,8 +48,12 @@ export class InvoiceService{
         // Inspired from: http://www.encodedna.com/angular/read-an-external-json-file-in-angular-4-and-convert-data-to-table.htm
     }
 
-    getInvoices(){
-        return INVOICES;
+    public getInvoices(){
+        return this._invoiceResponse;
+    }
+
+    public setInvoices(value : IInvoiceResponse){
+        this._invoiceResponse = value;
     }
 
     private handleError<T>(opertaion = 'operation', result?: T){

@@ -8,15 +8,18 @@
 <!-- https://stackoverflow.com/questions/43093786/using-angular2-ngfor-index/43093941 
 *ngIf="i%6===0"
 -->
+<div>
+    Time Stamp: <a>{{timeStamp | date : 'mediumTime'}}</a>
+</div>
 <table class="table" style="border: 0px">
     <tbody *ngFor="let invoice of invoices; let i = index;" style="border: 0px">
         <tr *ngIf="i%6===0" style="border: 0px solid red">
             <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i]"></invoice-thumbnail></td>
-            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+1]"></invoice-thumbnail></td>
-            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+2]"></invoice-thumbnail></td>
-            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+3]"></invoice-thumbnail></td>
-            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+4]"></invoice-thumbnail></td>
-            <td style="border: 0px"><invoice-thumbnail [m_invoice]="invoices[i+5]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail *ngIf= "invoices[i+1]" [m_invoice]="invoices[i+1]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail *ngIf= "invoices[i+2]" [m_invoice]="invoices[i+2]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail *ngIf= "invoices[i+3]" [m_invoice]="invoices[i+3]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail *ngIf= "invoices[i+4]" [m_invoice]="invoices[i+4]"></invoice-thumbnail></td>
+            <td style="border: 0px"><invoice-thumbnail *ngIf= "invoices[i+5]" [m_invoice]="invoices[i+5]"></invoice-thumbnail></td>
         </tr>
     </tbody>
 </table>

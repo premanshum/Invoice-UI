@@ -1,24 +1,18 @@
-<div>
-    <ul >
-        <li><h4>
+<div class="sidenav">
+        <h4>
             <a [routerLink]="['/invoices', m_invoiceNumber]"
-                (click)="clickHandler('LineItems')"
-                [ngClass]="selectedItem == 'LineItems'?'activeLink':''">Line Item</a></h4>
-        </li>
-        <li><h4>
+            (click)="clickHandler('LineItems')"
+            [ngClass]="selectedItem == 'LineItems'?'activeLink':''">Line Item</a></h4>
+        <h4>
             <a [routerLink]="['/invoices', m_invoiceNumber]"
-                (click)="clickHandler('Payments')" 
-                [ngClass]="selectedItem == 'Payments'?'activeLink':''">Payments</a></h4>
-        </li>
-        <li><h4>
+            (click)="clickHandler('Payments')" 
+            [ngClass]="selectedItem == 'Payments'?'activeLink':''">Payments</a></h4>
+        <h4>
             <a [routerLink]="['/invoices', m_invoiceNumber]"
             (click)="clickHandler('Providers')"
             [ngClass]="selectedItem == 'Providers'?'activeLink':''">Providers</a></h4>
-        </li>
-        <li><h4>
+        <h4>
             <a [routerLink]="['/invoices', m_invoiceNumber]"
             (click)="clickHandler('Bill Notes')"
-            [ngClass]="selectedItem == 'Bill Notes'?'activeLink':''">Bill Notes</a></h4>
-        </li>
-    </ul>
+            [ngClass]="selectedItem == 'Bill Notes'?'activeLink':''">Bill Notes</a></h4>    
 </div>

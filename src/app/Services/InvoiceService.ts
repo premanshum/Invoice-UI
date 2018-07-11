@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from '../dataModal/IProduct';
-import { IInvoiceResponse } from '../dataModal/IInvoiceResponse';
+import { IServiceResponse } from '../dataModal/IServiceResponse';
 import { catchError } from 'rxjs/operators';
 import { IInvoice } from '../dataModal/IInvoice';
 
@@ -13,15 +13,15 @@ import { IInvoice } from '../dataModal/IInvoice';
 export class InvoiceService{
 
     products : IProduct[];
-    _invoiceResponse : IInvoiceResponse;
+    _invoiceResponse : IServiceResponse;
 
     constructor(private http:Http, private httpService: HttpClient){
         // Nothing interesting
     }
 
-    public getInvoicesFromApi() : Observable<IInvoiceResponse>{
-        return this.httpService.get<IInvoiceResponse>("https://premwebapp01-dev02.azurewebsites.net/invoice/MethodB")
-        .pipe(catchError(this.handleError<IInvoiceResponse>('getInvoicesFromApi', null)));
+    public getInvoicesFromApi() : Observable<IServiceResponse>{
+        return this.httpService.get<IServiceResponse>("https://premwebapp01-dev02.azurewebsites.net/invoice/MethodB")
+        .pipe(catchError(this.handleError<IServiceResponse>('getInvoicesFromApi', null)));
     }
 
     public searchInvoices(searchTerm : string){
@@ -52,7 +52,7 @@ export class InvoiceService{
         return this._invoiceResponse;
     }
 
-    public setInvoices(value : IInvoiceResponse){
+    public setInvoices(value : IServiceResponse){
         this._invoiceResponse = value;
     }
 

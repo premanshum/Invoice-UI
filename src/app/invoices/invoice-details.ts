@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Params } from '@angular/router'
 import { IInvoice } from '../dataModal/IInvoice';
 import { ILineItem } from '../dataModal/ILineItem';
 import { IPayment } from '../dataModal/IPayment';
@@ -18,6 +18,7 @@ export class InvoiceDetails  implements OnInit{
     m_invoiceDetail : IInvoice;
     m_currentComponentName : string;
     m_products : IProduct[];
+    parameter : string;
     
     constructor(
         private route:ActivatedRoute,
@@ -25,41 +26,50 @@ export class InvoiceDetails  implements OnInit{
         private invoiceService: InvoiceService) { }
     
     ngOnInit() {
+
+        this.route.params.forEach((params: Params) => {
+            //this.m_invoiceDetail.InvoiceNumber = params['id'];
+            this.m_invoiceDetail = {
+                Id : '001',
+                Reviewed: '1',
+                User: '1500',
+                ModifiedDate: new Date('9/8/2017'),
+                Description: 'This is invoice Description.',
+                SiteId: '001',
+                ParentSiteId: 'P001',
+                InvoiceNumber: params['id'],
+                MRev: false,
+                IsModified: false,
+                IsDeleted: true,
+                InvoiceTotal: '40',
+                Payments : this.tempPayments,
+                LineItems : this.tempLineItems,
+                Providers : this.tempProviders
+            };
+        
+        
+        })
+
         //this.m_products = this.tempProducts;
         this.m_currentComponentName = 'LineItems';
         //this.project = this.projectService.getProject(this.route.snapshot.params['id']);        
-        this.m_invoiceDetail = {
-            Id : '001',
-            Reviewed: '1',
-            User: '1500',
-            ModifiedDate: new Date('9/8/2017'),
-            Description: 'This is invoice Description.',
-            SiteId: '001',
-            ParentSiteId: 'P001',
-            InvoiceNumber: this.route.snapshot.params['id'],
-            MRev: false,
-            IsModified: false,
-            IsDeleted: true,
-            InvoiceTotal: '40',
-            Payments : this.tempPayments,
-            LineItems : this.tempLineItems,
-            Providers : this.tempProviders
-        };
+        
 
+        console.log(this.m_invoiceDetail);
 
         this.invoiceService
         .getProductsFromJson()
         .subscribe(
           data => {
             this.m_products = data as IProduct[];
-            //console.log ("We got the Data. " + this.products);
+            console.log ("We got the Data. " + this.m_products);
           },
           (err: HttpErrorResponse) => {
             console.log ("Something gone bad." + err.message);
           }
       );
 
-    }
+    } // ngOnInit()
 
     sideBarClickHandled(data){
         //console.log('Received : ', data.aValue);

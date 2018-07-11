@@ -1,13 +1,14 @@
 <div class="container-fluid">
-    <div class="row">
-        <side-bar   class="col-md-2 sidebar" 
-                    [m_invoiceNumber] = "m_invoiceDetail.invoiceNumber"
-                    (sideBarClick) = "sideBarClickHandled($event)"></side-bar> <!-- $event is a part of syntax, cannot be renamed to anything else -->
-        <div> 
-            <h2 class="sub-header">{{m_invoiceDetail.invoiceNumber}}</h2>
-            <h5>{{m_invoiceDetail.description}}</h5>
-            <h5>Office : {{m_invoiceDetail.modifiedDate | date : 'mediumDate'}}</h5>
-            <h5>Path : {{m_invoiceDetail.siteId}}</h5>
+    <div class="row BorderYes1">
+        <side-bar class="BorderYes1"
+            [m_invoiceNumber] = "m_invoiceDetail.InvoiceNumber"
+            (sideBarClick) = "sideBarClickHandled($event)">
+        </side-bar> <!-- $event is a part of syntax, cannot be renamed to anything else -->
+        <div class="BorderB1" style="position: relative; width:80%"> 
+            <h2 class="sub-header">{{m_invoiceDetail.InvoiceNumber}}</h2>
+            <h5>{{m_invoiceDetail.Description}}</h5>
+            <h5>Office : {{m_invoiceDetail.ModifiedDate | date : 'mediumDate'}}</h5>
+            <h5>Path : {{m_invoiceDetail.SiteId}}</h5>
             <invoice-lineItems class="col-md-6 main"
                         *ngIf="m_currentComponentName == 'LineItems'"
                         [m_invoiceDetail] = "m_invoiceDetail"

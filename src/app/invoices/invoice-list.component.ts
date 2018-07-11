@@ -3,7 +3,7 @@ import { InvoiceService } from '../Services/InvoiceService';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from '../dataModal/IProduct';
-import { IInvoiceResponse } from '../dataModal/IInvoiceResponse';
+import { IServiceResponse } from '../dataModal/IServiceResponse';
 import { IInvoice } from '../dataModal/IInvoice';
 
 
@@ -14,7 +14,7 @@ import { IInvoice } from '../dataModal/IInvoice';
 export class InvoiceListComponent implements OnInit {
 
   invoices:IInvoice[];
-  apiResponse: IInvoiceResponse;
+  apiResponse: IServiceResponse;
   products : IProduct[];
   appConfig: any[];
   timeStamp : any;

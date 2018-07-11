@@ -24,7 +24,10 @@
 
 <!-- modalBox is a modal component 100668486232 -->
 <modalBox title="Invoice Search">
-    <div class="list-group">
-        <a class="list-group-item bg-dark" *ngFor="let invoice of _foundInvoices">{{invoice.InvoiceNumber}}</a>
+    <div class="list-group BorderYes">
+        <a class="list-group-item bg-dark" style="padding: 5px" 
+        *ngFor="let invoice of _foundInvoices"
+        [routerLink]="['/invoices', invoice.InvoiceNumber]">
+        {{invoice.InvoiceNumber}}</a>
     </div>
 </modalBox>

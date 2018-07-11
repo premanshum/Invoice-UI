@@ -1,4 +1,4 @@
-export interface IInvoiceResponse {
+export interface IServiceResponse {
     WasSuccessful: string,
     FailureReasons: string[],
     TimeTaken: string,

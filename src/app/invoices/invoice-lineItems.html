@@ -1,4 +1,4 @@
-<div > 
+<div class="container" > 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             
-            <tbody *ngFor="let lineItem of m_invoiceDetail.lineItems">
+            <tbody *ngFor="let lineItem of m_invoiceDetail.LineItems">
                 <tr>
                     <td contenteditable='false'>
                         <select id="Id" #ctrl="ngModel" name="productSelect" 

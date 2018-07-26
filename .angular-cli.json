@@ -9,6 +9,7 @@
       "outDir": "dist",
       "assets": [
         "assets",
+        "assets/productRepository.json",
         "favicon.ico"
       ],
       "index": "index.html",
@@ -20,8 +21,6 @@
       "prefix": "app",
       "styles": [
         "styles.css"
-      ],
-      "scripts": [
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

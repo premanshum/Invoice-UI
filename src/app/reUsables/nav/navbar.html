@@ -8,9 +8,9 @@
             <li><a [routerLink]="['/invoices']">All Invoices</a></li>
             <!--<li><a [routerLink]="['/trial']">Create Invoice</a></li>            -->    
         </ul>
-        <form id="searchForm" (ngSubmit)="searchInvoices(searchTerm)" class="form-inline my-2 my-lg-0"  >
+        <form id="searchForm" (ngSubmit)="searchInvoices(_searchterm)" class="form-inline my-2 my-lg-0"  >
             <input  type="text" class="form-control" placeholder="Invoice Number" 
-                    [(ngModel)]="searchTerm" name="searchTerm">                
+                    [(ngModel)]="_searchterm" name="searchTerm">                
             <button class="btn btn-success" data-toggle="modal" modalBox-trigger>Search</button>
         </form>
     </div>

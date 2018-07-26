@@ -42,7 +42,7 @@ export class InvoiceService{
 
     
     public getProductsFromJson() : Observable<any>{
-        var xxx = this.httpService.get('./assets/productRepository.json');
+        var xxx = this.httpService.get('assets/productRepository.json');
         //.map((response: Response) => response.json());
         return xxx;
         // Inspired from: http://www.encodedna.com/angular/read-an-external-json-file-in-angular-4-and-convert-data-to-table.htm

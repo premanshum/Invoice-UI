@@ -1,0 +1,6 @@
+{
+    "version":"1.1",
+    "invoiceApiUrl":"https://prem-webapp-via-cli.azurewebsites.net/invoice/getinvoice",
+    "productApiUrl":"https://prem-webapp-via-cli.azurewebsites.net/product",
+    "paymentApiUrl":"https://prem-webapp-via-cli.azurewebsites.net/payment"
+}

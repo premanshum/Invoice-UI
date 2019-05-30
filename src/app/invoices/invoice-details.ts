@@ -27,6 +27,8 @@ export class InvoiceDetails  implements OnInit{
     
     ngOnInit() {
 
+        this.FillProduct();
+
         this.route.params.forEach((params: Params) => {
             //this.m_invoiceDetail.InvoiceNumber = params['id'];
             this.m_invoiceDetail = {
@@ -50,25 +52,8 @@ export class InvoiceDetails  implements OnInit{
         
         })
 
-        //this.m_products = this.tempProducts;
-        this.m_currentComponentName = 'LineItems';
-        //this.project = this.projectService.getProject(this.route.snapshot.params['id']);        
+        this.m_currentComponentName = 'LineItems';       
         
-
-        console.log(this.m_invoiceDetail);
-
-        this.invoiceService
-        .getProductsFromJson()
-        .subscribe(
-          data => {
-            this.m_products = data as IProduct[];
-            console.log ("We got the Data. " + this.m_products);
-          },
-          (err: HttpErrorResponse) => {
-            console.log ("Something gone bad." + err.message);
-          }
-      );
-
     } // ngOnInit()
 
     sideBarClickHandled(data){
@@ -83,9 +68,27 @@ export class InvoiceDetails  implements OnInit{
         this.m_invoiceDetail
             .LineItems
             .find(l=>l.id == data.selectedLineItem.id).product = data.selectedProduct;
+
         //alineItem.product = data.selectedProduct;
-        console.log(this.m_invoiceDetail);
+        //console.log(this.m_invoiceDetail);
     }
+
+
+    // Fill the product
+    FillProduct(){
+        this.invoiceService
+        .getProductsFromJson() 
+        .subscribe(
+          data => {
+            this.m_products = data as IProduct[];
+            console.log ("We got the Data. " + this.m_products);
+          },
+          (err: HttpErrorResponse) => {
+            console.log ("Something gone bad." + err.message);
+          }
+      );
+    }
+
     
 
 // Dummy Data
@@ -349,4 +352,4 @@ export class InvoiceDetails  implements OnInit{
             email:"pvdr011@junkemail.com"
         }
     ];
-}
+} // End of Class

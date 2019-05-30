@@ -14,19 +14,19 @@
     <div class="BorderNo">
         <h5 class="BorderNo">{{m_invoice.InvoiceNumber}}</h5>
     </div>
-    <div class=" BorderNo">
+    <div class=" BorderNo" style="font-size: small">
         {{m_invoice.Description}}
     </div>
-    <div class=" BorderNo">
+    <div class=" BorderNo" style="font-size: small">
         Site# {{m_invoice.SiteId}} ({{m_invoice.ParentSiteId}})
     </div>
-    <div class="">
+    <div class="" style="font-size: small">
         Modified On {{m_invoice.ModifiedDate}} ({{m_invoice.IsModified}})
     </div>
-    <div class=" Borderno">
+    <div class=" Borderno" style="font-size: small">
         Total : {{m_invoice.InvoiceTotal}}
     </div>
-    <div class=" Borderno">
+    <div class=" Borderno" style="font-size: small">
         User : {{m_invoice.User}}
     </div>
 </div>

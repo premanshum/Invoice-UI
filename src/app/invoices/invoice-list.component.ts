@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from '../dataModal/IProduct';
 import { IServiceResponse } from '../dataModal/IServiceResponse';
 import { IInvoice } from '../dataModal/IInvoice';
+import { IConfiguration } from '../dataModal/IConfiguration';
 
 
 @Component({
@@ -19,81 +20,61 @@ export class InvoiceListComponent implements OnInit {
   appConfig: any[];
   timeStamp : any;
   //private invoiceService;
-  constructor( private invoiceService: InvoiceService, private httpService: HttpClient) { 
-    
+  constructor( private invoiceService: InvoiceService, private httpService: HttpClient) {
   }
 
-  ngOnInit() {
-
-    this.apiResponse = this.invoiceService.getInvoices();
-    if(this.apiResponse == null)
-    {
-      this.invoiceService
-            .getInvoicesFromApi()
-            .subscribe(data => {
-              this.apiResponse = data;
-              this.apiResponse.TimeStamp = new Date();
-              //console.log ("We got the Data. " + JSON.stringify({data}, null, 4));
-              this.invoices = this.apiResponse.Result;
-              this.timeStamp = this.apiResponse.TimeStamp;
-              this.invoiceService.setInvoices(this.apiResponse);
-            },
-            (err: HttpErrorResponse) => {
-              console.log ("Something gone bad." + err.message);
-            });
-    }
-    else
-    {
-      this.invoices = this.apiResponse.Result;
-      this.timeStamp = this.apiResponse.TimeStamp;
-    }
-
-
-    //this.appConfig[0] = '@ConfigurationManager.AppSettings["userName"]';
-    //console.log("AppConfig:" + this.appConfig[0]);
-
-    //this.invoices = this.invoiceService.getInvoices();
-       
-/*
-    this.apiResponse = this.invoiceService.getInvoices(true);
-    this.invoices = this.apiResponse.Result;
-  
-    this.invoiceService
-          .getInvoicesFromApi()
-          .subscribe(data => {
-            this.apiResponse = data;
-            console.log ("We got the Data. " + this.apiResponse.Result);
-            this.invoices = this.apiResponse.Result;
-          },
-          (err: HttpErrorResponse) => {
-            console.log ("Something gone bad." + err.message);
-          });
-            
-/*
-    this.invoiceService
-          .getProductsFromJson()
-          .subscribe(
+  ngOnInit() {    
+    
+        console.log("Reading Configuration");
+        this.httpService.get<IConfiguration>('assets/configuration.json')
+        .subscribe(
             data => {
-              this.products = data as IProduct[];
-              //console.log ("We got the Data. " + this.products);
+                console.log ("We got the configuration data. ", <IConfiguration> data);
+                //this._configuration = data as IConfiguration;
+                this.invoiceService.setConfiguration(data);
+                this.invoiceService
+                      .getInvoicesFromApi()
+                      .subscribe(invdata => {
+                        this.apiResponse = invdata;
+                        this.apiResponse.TimeStamp = new Date();
+                        console.log ("Inside Invoice-List ");
+                        this.invoices = this.apiResponse.Result;
+                        this.timeStamp = this.apiResponse.TimeStamp;
+                        this.invoiceService.setInvoices(this.apiResponse);
+                      },
+                      (err: HttpErrorResponse) => {
+                        console.log ("Something gone bad." + err.message);
+                      });
             },
-            (err: HttpErrorResponse) => {
-              console.log ("Something gone bad." + err.message);
+            (err) => {
+            console.log ("Something gone bad." + err.message);
             }
         );
-        
-/*
-        this.httpService.get('assets/productRepository.json').subscribe(
-          data => {
-            this.products = data as IProduct[];	 // FILL THE ARRAY WITH DATA.
-            console.log(this.products);
-          },
-          (err: HttpErrorResponse) => {
-            console.log ("This is the error;"+err.message);
-          }
-        );
-        */
 
-  }
+        //this.apiResponse = this.invoiceService.getInvoices();
+        /*
+        if(this.apiResponse == null)
+        {
+          this.invoiceService
+                .getInvoicesFromApi()
+                .subscribe(data => {
+                  this.apiResponse = data;
+                  this.apiResponse.TimeStamp = new Date();
+                  console.log ("Inside Invoice-List ");
+                  this.invoices = this.apiResponse.Result;
+                  this.timeStamp = this.apiResponse.TimeStamp;
+                  this.invoiceService.setInvoices(this.apiResponse);
+                },
+                (err: HttpErrorResponse) => {
+                  console.log ("Something gone bad." + err.message);
+                });
+        }
+        else
+        {
+          this.invoices = this.apiResponse.Result;
+          this.timeStamp = this.apiResponse.TimeStamp;
+        }
+        */
+      }
 
 }

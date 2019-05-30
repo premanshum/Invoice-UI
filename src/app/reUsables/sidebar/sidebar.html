@@ -1,18 +1,14 @@
 <div class="sidenav">
-        <h4>
-            <a [routerLink]="['/invoices', m_invoiceNumber]"
-            (click)="clickHandler('LineItems')"
-            [ngClass]="selectedItem == 'LineItems'?'activeLink':''">Line Item</a></h4>
-        <h4>
-            <a [routerLink]="['/invoices', m_invoiceNumber]"
-            (click)="clickHandler('Payments')" 
-            [ngClass]="selectedItem == 'Payments'?'activeLink':''">Payments</a></h4>
-        <h4>
-            <a [routerLink]="['/invoices', m_invoiceNumber]"
-            (click)="clickHandler('Providers')"
-            [ngClass]="selectedItem == 'Providers'?'activeLink':''">Providers</a></h4>
-        <h4>
-            <a [routerLink]="['/invoices', m_invoiceNumber]"
-            (click)="clickHandler('Bill Notes')"
-            [ngClass]="selectedItem == 'Bill Notes'?'activeLink':''">Bill Notes</a></h4>    
+    <a [routerLink]="['/invoices', m_invoiceNumber]"
+        (click)="clickHandler('LineItems')"
+        [ngClass]="selectedItem == 'LineItems'?'activeLink':''" style="font-size:large">Line Items</a>
+    <a [routerLink]="['/invoices', m_invoiceNumber]"
+        (click)="clickHandler('Payments')" 
+        [ngClass]="selectedItem == 'Payments'?'activeLink':''" style="font-size:large">Payments</a>
+    <a [routerLink]="['/invoices', m_invoiceNumber]"
+        (click)="clickHandler('Providers')"
+        [ngClass]="selectedItem == 'Providers'?'activeLink':''" style="font-size:large">Providers</a>
+    <a [routerLink]="['/invoices', m_invoiceNumber]"
+        (click)="clickHandler('Bill Notes')"
+        [ngClass]="selectedItem == 'Bill Notes'?'activeLink':''" style="font-size:large">Bill Notes</a>
 </div>

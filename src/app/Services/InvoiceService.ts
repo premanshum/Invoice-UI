@@ -1,6 +1,6 @@
 import { Injectable} from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
+//import { Http } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IProduct } from '../dataModal/IProduct';
@@ -18,7 +18,7 @@ export class InvoiceService{
     private _configuration : IConfiguration;
 
 
-    constructor(private http:Http, private httpService: HttpClient){
+    constructor(private httpService: HttpClient){
         // Nothing interesting
     }
 
@@ -56,7 +56,7 @@ export class InvoiceService{
     private handleError<T>(opertaion = 'operation', result?: T){
         return (error : any) : Observable<T> => {
             console.error(error);
-            return Observable.of(result as T);
+            return of(result as T);
         }
     }
 

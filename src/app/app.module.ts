@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
-import { HttpModule } from '@angular/http';
+//import { HttpModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -39,7 +39,6 @@ import { JQ_TOKEN, JQUERY_PROVIDER } from './services/jQuery-service';
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
-    HttpModule,
     FormsModule,
     HttpClientModule
   ],

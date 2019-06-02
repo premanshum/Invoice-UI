@@ -22,7 +22,7 @@ export class MsalService {
         }
     };
 
-    private clientApplication = new Msal.UserAgentApplication(this.msalConfig);
+    //private clientApplication = new Msal.UserAgentApplication(this.msalConfig);
     
 
 
